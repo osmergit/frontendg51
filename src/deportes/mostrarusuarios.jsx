@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 //import styles from "./styles.module.css";
 
 const URI = 'http://localhost:8000/usuarios/shuser/'
-
+const URI2 = 'http://localhost:8000/usuarios/deluser/'
 
 export const CompShowUsers = () => {
     
@@ -21,7 +21,7 @@ export const CompShowUsers = () => {
 
     //procedimineto para eliminar un registro
     const deleteBlog = async (id) => {
-       await axios.delete(`${URI}${id}`)
+       await axios.delete(`${URI2}${id}`)
        getBlogs()
     }
 

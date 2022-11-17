@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CompCreateUser } from './deportes/Crearusuarios.jsx'
 import { CompShowUsers } from './deportes/mostrarusuarios.jsx'
+import { CompEditUser } from './deportes/Editarusuario.jsx'
+import { CompCreateEvento } from './deportes/CrearEventos.jsx'
 function App() {
   return (
     <div className="App">
@@ -16,7 +18,8 @@ function App() {
                          
                                <Route path='/create' element={ <CompCreateUser />} />
                                <Route path='/users' element ={ <CompShowUsers />} />
-
+                               <Route path='/edit/:id' element= {<CompEditUser />} />
+                               <Route path='/regevento' element= { <CompCreateEvento />} />
                       </Routes>
       
       </BrowserRouter>
