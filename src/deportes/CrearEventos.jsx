@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
 
 
 const URI = 'http://localhost:8000/usuarios/regevento'
@@ -19,14 +21,15 @@ export const CompCreateEvento = () => {
     const store = async (e) => {
         e.preventDefault()
         await axios.post(URI, {fecha: fecha, equipo1: equipo1, equipo2: equipo2, marcador1:marcador1, marcador2: marcador2, tipoevento:tipoevento })
-        navigate('/')
+        navigate('/shevento')
     }   
     return (
-        <div className="login-form">
-           <h3>Creación de  Usuarios</h3>
-           <form onSubmit={store}>
+        <div >
+           <h3>Creación de Eventos Deportivos</h3>
+           <Form onSubmit={store}>
+           <Form.Group className="mb-3" >
                <div>
-                    <input
+                    <Form.Control
                         value={fecha}
                         onChange={ (e)=> setFecha(e.target.value)} 
                         type="text"
@@ -35,7 +38,7 @@ export const CompCreateEvento = () => {
                     />                                           
                 </div>
                 <div>
-                     <input
+                     <Form.Control
                         value={equipo1}
                         onChange={ (e)=> setEquipo1(e.target.value)} 
                         type="text"
@@ -44,7 +47,7 @@ export const CompCreateEvento = () => {
                      />                      
                  </div>
                  <div>
-                     <input 
+                     <Form.Control 
                         value={equipo2}
                         onChange={ (e)=> setEquipo2(e.target.value)} 
                         type = "text"
@@ -54,7 +57,7 @@ export const CompCreateEvento = () => {
                  </div>
 
                  <div>
-                     <input 
+                     <Form.Control
                         value={marcador1}
                         onChange={ (e)=> setMarcador1(e.target.value)} 
                         type = "text"
@@ -63,7 +66,7 @@ export const CompCreateEvento = () => {
                       />                 
                  </div>
                  <div>
-                     <input 
+                     <Form.Control
                         value={marcador2}
                         onChange={ (e)=> setMarcador2(e.target.value)} 
                         type = "text"
@@ -72,7 +75,7 @@ export const CompCreateEvento = () => {
                       />                 
                  </div>
                  <div>
-                     <input 
+                     <Form.Control
                         value={tipoevento}
                         onChange={ (e)=> setTipoevento(e.target.value)} 
                         type = "text"
@@ -80,8 +83,11 @@ export const CompCreateEvento = () => {
                         
                       />                 
                  </div>
-                 <button type="submit" className="btn-register">Guardar</button>                  
-           </form>
+               
+                 <Button variant="primary" size="lg" type="submit" >Guardar</Button> 
+                
+                 </Form.Group>                 
+           </Form>
         </div>
     )
 }

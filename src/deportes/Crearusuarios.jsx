@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
 //import '../../src/style.css';
 //import '../style.css';
 
@@ -20,11 +22,13 @@ export const CompCreateUser = () => {
         navigate('/users')
     }   
     return (
-        <div className="login-form">
+        <div>
            <h3>Creación de  Usuarios</h3>
-           <form onSubmit={store}>
+           <Form onSubmit={store}>
+           <Form.Group className="mb-3" >
                <div>
-                    <input
+              
+                    <Form.Control
                         value={nomuser}
                         onChange={ (e)=> setUsuario(e.target.value)} 
                         type="text"
@@ -33,7 +37,8 @@ export const CompCreateUser = () => {
                     />                                           
                 </div>
                 <div>
-                     <input
+              
+                     <Form.Control
                         value={correo}
                         onChange={ (e)=> setContent(e.target.value)} 
                         type="email"
@@ -42,17 +47,19 @@ export const CompCreateUser = () => {
                      />                      
                  </div>
                  <div>
-                     <input 
+                 
+                     <Form.Control
                         value={password}
                         onChange={ (e)=> setPass(e.target.value)} 
                         type = "password"
-                        className='form-control'
+                        
                         placeholder = "Password"
                         
                       />                 
                  </div>
-                 <button type="submit" className="btn-register">Guardar</button>                  
-           </form>
+                 <Button  variant="primary" type="submit" className="btn-register">Guardar</Button>                  
+           </Form.Group>
+           </Form>
         </div>
     )
 }
