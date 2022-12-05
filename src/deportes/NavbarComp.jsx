@@ -29,7 +29,7 @@ export const NavBarComp = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">USUARIOS</Nav.Link>
+            <Nav.Link as = {Link} to = {"/users"}>USUARIOS</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               HELP
             </Nav.Link>

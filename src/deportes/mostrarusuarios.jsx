@@ -7,6 +7,20 @@ const URI = 'http://localhost:8000/usuarios/shuser/'
 const URI2 = 'http://localhost:8000/usuarios/deluser/'
 
 export const CompShowUsers = () => {
+
+    //Aca enviamos el Token como un Header
+
+const token1 = localStorage.getItem("auth")
+const token = `${token1}`;
+const beer = "Bearer"
+let axiosConfig = {
+    headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'accept': 'application/json',
+      //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk0NjcxMzgsImV4cCI6MTY2OTQ2ODkzOH0.Dp0FfAN_taNOtPRhOGeAB7nQZvMvzVddPhN4TKb3JJo',
+     'Authorization': `${beer} ${token}`,
+    }
+};
     
     const [users, setBlog] = useState([])
     useEffect( ()=>{
@@ -15,7 +29,7 @@ export const CompShowUsers = () => {
 
     //procedimineto para mostrar todos los registros
     const getBlogs = async () => {
-        const res = await axios.get(URI)
+        const res = await axios.get(URI, axiosConfig )
         setBlog(res.data)
     }
 

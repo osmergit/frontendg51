@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Swal from 'sweetalert2'
+import Card from 'react-bootstrap/Card';
 
 
 const URI = 'http://localhost:8000/usuarios/regevento'
@@ -24,8 +26,11 @@ export const CompCreateEvento = () => {
         navigate('/shevento')
     }   
     return (
-        <div >
-           <h3>Creación de Eventos Deportivos</h3>
+        <div className="login-form" >
+           
+           <Card style={{ width: '40rem' }}>
+                    <Card.Body>
+                    <h3>Creación de Eventos Deportivos</h3>
            <Form onSubmit={store}>
            <Form.Group className="mb-3" >
                <div>
@@ -88,6 +93,8 @@ export const CompCreateEvento = () => {
                 
                  </Form.Group>                 
            </Form>
+           </Card.Body>
+           </Card>
         </div>
     )
 }

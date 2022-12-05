@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import Table from 'react-bootstrap/Table';
 import { FaTrashAlt,FaPencilAlt,FaRegEdit } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 //importar nuestras rutas del backend
 //importar los eventos deportivos
@@ -13,6 +14,20 @@ const URI2 = 'http://localhost:8000/usuarios/delevento/'
 
 //procedimientos para mostrar los eventos deportivos
 export const CompMostrarEvento = () => {
+
+    //Aca enviamos el Token como un Header
+
+const token1 = localStorage.getItem("auth")
+const token = `${token1}`;
+const beer = "Bearer"
+let axiosConfig = {
+    headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'accept': 'application/json',
+      //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk0NjcxMzgsImV4cCI6MTY2OTQ2ODkzOH0.Dp0FfAN_taNOtPRhOGeAB7nQZvMvzVddPhN4TKb3JJo',
+     'Authorization': `${beer} ${token}`,
+    }
+};
     
     const [ceventos, setBlog] = useState([])
     useEffect( ()=>{
@@ -21,14 +36,34 @@ export const CompMostrarEvento = () => {
 
     //procedimineto para mostrar todos los registros
     const getBlogs = async () => {
-        const res = await axios.get(URI)
+        const res = await axios.get(URI,axiosConfig)
         setBlog(res.data)
     }
 
     //procedimineto para eliminar un registro
     const deleteBlog = async (_id) => {
-       await axios.delete(`${URI2}${_id}`)
-       getBlogs()
+    Swal.fire({
+        title: 'Advertencia',
+        text: 'Esta ud seguro de eliminar este evento?',
+        imageUrl:"https://www.pexels.com/es-es/foto/foto-del-rio-durante-el-dia-2030660/",
+        imageHeight: 200, 
+        imageWidth: 200, 
+        icon: 'question',
+        showDenyButton: true,
+        denyButtonText: "NO",
+        confirmButtonText: "SI",
+        
+
+    }).then(response => {
+        if(response.isConfirmed){
+             axios.delete(`${URI2}${_id}`)
+             Swal.fire("El evento fue borrado con exito")
+            getBlogs()
+        } else {
+            Swal.fire("seleccione el evento a borrar")
+        }
+    })
+     
     }
 
     //aca enviamos un fragmento de codigo la informacion a nuestra pagina principal
