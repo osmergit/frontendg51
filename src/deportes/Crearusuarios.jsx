@@ -8,8 +8,8 @@ import Card from 'react-bootstrap/Card';
 //import '../../src/style.css';
 //import '../style.css';
 
-const URI = 'http://localhost:8000/usuarios/reguser'
-
+//const URI = 'http://localhost:8000/usuarios/reguser'
+const URI = ' https://app-g51gh.herokuapp.com/usuarios/reguser'
 export const CompCreateUser = () => {
 
    

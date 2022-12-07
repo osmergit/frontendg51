@@ -38,7 +38,8 @@ export const Login = () => {
                     "Access-Control-Allow-Origin": "*",
                 }
               };
-            const URI = 'http://localhost:8000/usuarios/login'
+            //const URI = 'http://localhost:8000/usuarios/login'
+            const URI = 'https://app-g51gh.herokuapp.com/usuarios/login' 
         console.log("paso por aca")
         console.log (axiosConfig);
         const resp = await axios.post(URI, body, axiosConfig );

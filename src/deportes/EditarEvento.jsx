@@ -2,9 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 //Ruta para modificar "Actualizar" el evento
-const URI = 'http://localhost:8000/usuarios/upevento/'
+//const URI = 'http://localhost:8000/usuarios/upevento/'
+const URI = 'https://app-g51gh.herokuapp.com/usuarios/upevento/'
 //Ruta para mostra la información del evento deportivo antes de modificarlo
-const URI2 = 'http://localhost:8000/usuarios/shevento/'
+//const URI2 = 'http://localhost:8000/usuarios/shevento/'
+const URI2 = 'https://app-g51gh.herokuapp.com/usuarios/shevento/'
 
 export const CompEditEvento = () => {
     const [fecha, setFecha] = useState('')    

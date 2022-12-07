@@ -3,9 +3,10 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 //import styles from "./styles.module.css";
 
-const URI = 'http://localhost:8000/usuarios/shuser/'
-const URI2 = 'http://localhost:8000/usuarios/deluser/'
-
+//const URI = 'http://localhost:8000/usuarios/shuser/'
+const URI = 'https://app-g51gh.herokuapp.com/usuarios/shuser/'
+//const URI2 = 'http://localhost:8000/usuarios/deluser/'
+const URI2 = 'https://app-g51gh.herokuapp.com/usuarios/deluser/'
 export const CompShowUsers = () => {
 
     //Aca enviamos el Token como un Header
