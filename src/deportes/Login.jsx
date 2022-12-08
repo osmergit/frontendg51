@@ -8,6 +8,21 @@ import Card from 'react-bootstrap/Card';
 
 //aca inicia
 export const Login = () => {
+
+   //Aca enviamos el Token como un Header
+
+   const token1 = localStorage.getItem("auth")
+   const token = `${token1}`;
+   const beer = "Bearer"
+   let axiosConfig = {
+       headers: {
+           'Content-Type': 'application/json;charset=UTF-8',
+           'accept': 'application/json',
+         //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk0NjcxMzgsImV4cCI6MTY2OTQ2ODkzOH0.Dp0FfAN_taNOtPRhOGeAB7nQZvMvzVddPhN4TKb3JJo',
+        'Authorization': `${beer} ${token}`,
+       }
+   };
+
     const [body, setBody] = useState({ correo: '', password: '' })
     const navigate  = useNavigate()
    // const classes = useStyles()
@@ -39,7 +54,8 @@ export const Login = () => {
                 }
               };
             //const URI = 'http://localhost:8000/usuarios/login'
-            const URI = 'https://app-g51gh.herokuapp.com/usuarios/login' 
+            const URI = 'https://app-g51gh.herokuapp.com/usuarios/login'
+            
         console.log("paso por aca")
         console.log (axiosConfig);
         const resp = await axios.post(URI, body, axiosConfig );

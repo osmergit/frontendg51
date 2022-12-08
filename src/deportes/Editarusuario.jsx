@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 //const URI = 'http://localhost:8000/usuarios/shuser/'
 const URI = 'https://app-g51gh.herokuapp.com/usuarios/shuser/'
 //const URI2 = 'http://localhost:8000/usuarios/upuser/'
-const URI2 = 'https://app-g51gh.herokuapp.com/usuarios/upuser/'
+const URI2 = 'https://app-g51gh.herokuapp.com/usuarios/shuser/'
 export const CompEditUser = () => {
     const [nomuser, setUsuario] = useState('')    
     const [correo, setCorreo] = useState('')   
